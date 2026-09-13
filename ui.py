@@ -2,22 +2,22 @@ import streamlit as st
 import pickle
 import numpy as np
 from gensim.models import KeyedVectors
-from classes import Image, Caption 
+import gensim.downloader as api  # <--- Added this line
+from classes import Image, Caption
 from text_embedding import load_captions, embed_text, load_glove, idf_text, process_text
-
 import mygrad as mg
 
-# how to run: 
+# how to run:
 # in terminal, type streamlit run ui.py
 # a local server should pop up in your browser
 
 st.title("Trouble-Shooters")
-
 query = st.text_input("Enter your search query:", placeholder="e.g. horses on a beach")
-print("loading glove")
-glove = KeyedVectors.load_word2vec_format("glove.6B.200d.txt", binary=False)
 
+print("loading glove")
+glove = api.load("glove-wiki-gigaword-200")  # <--- Changed this line
 print("glove loaded")
+
 
 if st.button("Search"):
     if query.strip() == "":

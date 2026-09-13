@@ -21,7 +21,9 @@ def main():
     
     # Load GloVe word vectors
     # glove = load_glove()
-    glove = KeyedVectors.load_word2vec_format("glove.6B.200d.txt", binary=False)
+    import gensim.downloader as api
+    glove = api.load("glove-wiki-gigaword-200")
+
 
     # Load caption objects from a pickle file
     with open("all_caption.pkl", 'rb') as f:
