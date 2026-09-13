@@ -10,14 +10,17 @@ import mygrad as mg
 # how to run:
 # in terminal, type streamlit run ui.py
 # a local server should pop up in your browser
-
+@st.cache_resource
+def load_glove_cached():
+    import gensim.downloader as api
+    return api.load("glove-wiki-gigaword-200")
+    
 st.title("Semantic Search")
 query = st.text_input("Enter your search query:", placeholder="e.g. horses on a beach")
 
 print("loading glove")
-glove = api.load("glove-wiki-gigaword-200")  # <--- Changed this line
+glove = load_glove_cached()
 print("glove loaded")
-
 
 if st.button("Search"):
     if query.strip() == "":
