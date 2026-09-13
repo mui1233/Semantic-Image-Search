@@ -11,7 +11,7 @@ import mygrad as mg
 # in terminal, type streamlit run ui.py
 # a local server should pop up in your browser
 
-st.title("Trouble-Shooters")
+st.title("Semantic Search")
 query = st.text_input("Enter your search query:", placeholder="e.g. horses on a beach")
 
 print("loading glove")
