@@ -1,0 +1,5 @@
+__pycache__/
+*.pkl
+model_weights.npz
+glove.200d.kv
+glove.200d.kv.vectors.npy
